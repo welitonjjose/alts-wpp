@@ -3,7 +3,7 @@ version: "3"
 services:
   app:
     image: welitonjjose/alts-wpp:latest
-    platform: "linux/amd64"
+    platform: "linux/arm64"
     env_file: .env
     depends_on:
       - postgres
@@ -23,7 +23,7 @@ services:
 
   sidekiq:
     image: welitonjjose/alts-wpp:latest
-    platform: "linux/amd64"
+    platform: "linux/arm64"
     env_file: .env
     depends_on:
       - postgres
