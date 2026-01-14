@@ -22,6 +22,7 @@ echo "Database ready to accept connections."
 
 #install missing gems for local dev as we are using base image compiled for production
 bundle install
+bundle exec rails db:migrate db:seed
 
 BUNDLE="bundle check"
 
