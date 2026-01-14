@@ -3,6 +3,7 @@ version: "3"
 services:
   app:
     image: welitonjjose/alts-wpp:latest
+    platform: "linux/amd64"
     env_file: .env
     depends_on:
       - postgres
@@ -13,14 +14,16 @@ services:
       - NODE_ENV=production
       - RAILS_ENV=production
       - INSTALLATION_ENV=docker
-    entrypoint: entrypoint.sh
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
     command: ["bundle", "exec", "rails", "s", "-p", "4000", "-b", "0.0.0.0"]
     restart: always
     volumes:
       - storage_data:/app/storage
+      - ./entrypoint.sh:/entrypoint.sh:ro
 
   sidekiq:
     image: welitonjjose/alts-wpp:latest
+    platform: "linux/amd64"
     env_file: .env
     depends_on:
       - postgres
@@ -29,8 +32,11 @@ services:
       - NODE_ENV=production
       - RAILS_ENV=production
       - INSTALLATION_ENV=docker
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
     command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
     restart: always
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh:ro
 
   postgres:
     image: pgvector/pgvector:pg16
