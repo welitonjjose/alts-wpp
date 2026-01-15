@@ -23,7 +23,6 @@ services:
 
   sidekiq:
     image: welitonjjose/alts-wpp:1.1.0
-    platform: "linux/arm64"
     env_file: .env
     depends_on:
       - postgres
