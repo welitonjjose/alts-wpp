@@ -22,7 +22,7 @@ services:
       - ./entrypoint.sh:/entrypoint.sh:ro
 
   sidekiq:
-    image: welitonjjose/alts-wpp:latest
+    image: welitonjjose/alts-wpp:1.0.0
     platform: "linux/arm64"
     env_file: .env
     depends_on:
