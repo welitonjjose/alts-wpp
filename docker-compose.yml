@@ -24,6 +24,7 @@ services:
     image: welitonjjose/alts-wpp:1.2.2
     env_file: .env
     depends_on:
+      - app
       - postgres
       - redis
     environment:
