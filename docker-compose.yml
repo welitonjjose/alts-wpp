@@ -17,7 +17,6 @@ services:
     command: ["bundle", "exec", "rails", "s", "-p", "4000", "-b", "0.0.0.0"]
     restart: always
     volumes:
-      - storage_data:/app/storage
       - ./entrypoint.sh:/entrypoint.sh:ro
 
   sidekiq:
