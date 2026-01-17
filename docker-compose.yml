@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: welitonjjose/alts-wpp:1.2.4
+    image: welitonjjose/alts-wpp:1.4.0
     env_file: .env
     depends_on:
       - postgres
@@ -20,7 +20,7 @@ services:
       - ./entrypoint.sh:/entrypoint.sh:ro
 
   sidekiq:
-    image: welitonjjose/alts-wpp:1.2.4
+    image: welitonjjose/alts-wpp:1.4.0
     env_file: .env
     depends_on:
       - app
