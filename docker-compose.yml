@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: welitonjjose/alts-wpp:1.5.1
+    image: welitonjjose/alts-wpp:1.5.2
     # build:
     #   context: ..
     #   dockerfile: builder/Dockerfile
@@ -17,14 +17,14 @@ services:
       - RAILS_ENV=production
       - INSTALLATION_ENV=docker
     entrypoint: ["/bin/sh", "/entrypoint.sh"]
-    command: ["bundle", "exec", "rails", "s", "-p", "4000", "-b", "0.0.0.0"]
+    command: ["bundle", "exec", "rails", "s", "-p", "80", "-b", "0.0.0.0"]
     restart: always
     volumes:
       - ./entrypoint.sh:/entrypoint.sh:ro
       - storage_data:/app/storage
 
   sidekiq:
-    image: welitonjjose/alts-wpp:1.5.1
+    image: welitonjjose/alts-wpp:1.5.2
     # build:
     #   context: ..
     #   dockerfile: builder/Dockerfile
