@@ -2,7 +2,10 @@ version: "3"
 
 services:
   app:
-    image: welitonjjose/alts-wpp:1.4.8
+    image: welitonjjose/alts-wpp:1.5.0
+    # build:
+    #   context: ..
+    #   dockerfile: builder/Dockerfile
     env_file: .env
     depends_on:
       - postgres
@@ -18,9 +21,13 @@ services:
     restart: always
     volumes:
       - ./entrypoint.sh:/entrypoint.sh:ro
+      - storage_data:/app/storage
 
   sidekiq:
-    image: welitonjjose/alts-wpp:1.4.8
+    image: welitonjjose/alts-wpp:1.5.0
+    # build:
+    #   context: ..
+    #   dockerfile: builder/Dockerfile
     env_file: .env
     depends_on:
       - app
@@ -35,6 +42,7 @@ services:
     restart: always
     volumes:
       - ./entrypoint.sh:/entrypoint.sh:ro
+      - storage_data:/app/storage
 
   postgres:
     image: pgvector/pgvector:pg16
