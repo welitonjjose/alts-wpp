@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: welitonjjose/alts-wpp:1.5.0
+    image: welitonjjose/alts-wpp:1.5.1
     # build:
     #   context: ..
     #   dockerfile: builder/Dockerfile
@@ -24,7 +24,7 @@ services:
       - storage_data:/app/storage
 
   sidekiq:
-    image: welitonjjose/alts-wpp:1.5.0
+    image: welitonjjose/alts-wpp:1.5.1
     # build:
     #   context: ..
     #   dockerfile: builder/Dockerfile
