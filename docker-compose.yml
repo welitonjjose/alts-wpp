@@ -7,8 +7,6 @@ services:
     depends_on:
       - postgres
       - redis
-    ports:
-      - "80:4000"
     environment:
       - NODE_ENV=production
       - RAILS_ENV=production
@@ -19,6 +17,19 @@ services:
     volumes:
       - ./entrypoint.sh:/entrypoint.sh:ro
       - storage_data:/app/storage
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./letsencrypt/etc:/etc/letsencrypt
+      - ./letsencrypt/lib:/var/lib/letsencrypt
+    depends_on:
+      - app
 
   sidekiq:
     image: welitonjjose/alts-wpp:1.5.3
