@@ -2,10 +2,7 @@ version: "3"
 
 services:
   app:
-    image: welitonjjose/alts-wpp:1.5.2
-    # build:
-    #   context: ..
-    #   dockerfile: builder/Dockerfile
+    image: welitonjjose/alts-wpp:1.5.3
     env_file: .env
     depends_on:
       - postgres
@@ -24,10 +21,7 @@ services:
       - storage_data:/app/storage
 
   sidekiq:
-    image: welitonjjose/alts-wpp:1.5.2
-    # build:
-    #   context: ..
-    #   dockerfile: builder/Dockerfile
+    image: welitonjjose/alts-wpp:1.5.3
     env_file: .env
     depends_on:
       - app
